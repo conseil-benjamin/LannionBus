@@ -92,6 +92,7 @@ function App() {
                   backgroundColor: '#fff',
                   borderRadius: 25,
                   padding: 10,
+                  marginTop: 20,
                 }}>
                 <FontAwesomeIcon icon={faChevronLeft} />
               </View>
@@ -100,6 +101,7 @@ function App() {
                   backgroundColor: '#fff',
                   borderRadius: 25,
                   padding: 5,
+                  marginTop: 20,
                 }}>
                 <Image
                   style={{height: 25, width: 25}}
@@ -137,6 +139,7 @@ function App() {
                     textAlign: 'center',
                     marginTop: 10,
                     color: 'black',
+                    fontSize: 15,
                   }}>
                   Période de validité
                 </Text>
@@ -157,7 +160,7 @@ function App() {
                     <Text
                       style={{
                         fontWeight: '900',
-                        fontSize: 19,
+                        fontSize: 22,
                         marginRight: 60,
                         color: 'black',
                       }}>
@@ -165,7 +168,7 @@ function App() {
                     </Text>
                     <Text
                       style={{fontSize: 17, marginRight: 60, color: 'black'}}>
-                      09:45
+                      06:32
                     </Text>
                   </View>
                   <View
@@ -178,7 +181,7 @@ function App() {
                     <Text
                       style={{
                         color: 'black',
-                        fontSize: 19,
+                        fontSize: 22,
                         fontWeight: 'bold',
                       }}>
                       {currentDatePlusOneMonth}
@@ -205,7 +208,6 @@ function App() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: 20,
-                    marginLeft: 10,
                   }}>
                   <Image
                     style={{width: 50, height: 50}}
@@ -225,7 +227,7 @@ function App() {
                       textAlign: 'center',
                       fontWeight: 'bold',
                       color: 'black',
-                      fontSize: 18,
+                      fontSize: 20,
                     }}>
                     {currentDate}
                   </Text>
@@ -233,7 +235,7 @@ function App() {
                     style={{
                       textAlign: 'center',
                       color: 'black',
-                      fontSize: 15,
+                      fontSize: 20,
                     }}>
                     {hours}:{minutes}
                   </Text>
@@ -242,7 +244,7 @@ function App() {
                       textAlign: 'center',
                       fontWeight: 'bold',
                       color: 'black',
-                      fontSize: 18,
+                      fontSize: 19,
                     }}>
                     176-61211151BDZQD41441
                   </Text>
@@ -252,8 +254,9 @@ function App() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    marginRight: 40,
                   }}>
-                  <Text style={{color: 'green', fontSize: 17}}>
+                  <Text style={{color: '#32CD32', fontSize: 17}}>
                     {minutesTimer.toString().padStart(2, '0')}:
                     {seconds.toString().padStart(2, '0')}
                   </Text>
