@@ -7,8 +7,8 @@ const AnimatedCircles = () => {
   useEffect(() => {
     const animation = Animated.loop(
       Animated.timing(rotation, {
-        //toValue: 1,
-        //duration: 4500,
+        toValue: 1,
+        duration: 5000,
         useNativeDriver: true,
       })
     );
@@ -16,42 +16,31 @@ const AnimatedCircles = () => {
     return () => animation.stop();
   }, []);
 
-  const createCircleStyle = (baseStyles, top, left) => {
+  // On réduit la valeur du rayon ici pour rapprocher les cercles
+  const createCircleStyle = (radius, offsetAngle = 0) => {
     const rotate = rotation.interpolate({
       inputRange: [0, 1],
-      outputRange: ['0deg', '360deg'],
+      outputRange: [`${offsetAngle}deg`, `${360 + offsetAngle}deg`],
     });
 
-    const translateX = rotation.interpolate({
-      inputRange: [0, 0.25, 0.5, 0.75, 1],
-      outputRange: [0, left, 20, -left, 20],
-    });
-
-    const translateY = rotation.interpolate({
-      inputRange: [0, 0.25, 0.5, 0.75, 1],
-      outputRange: [0, top, top - 20, top, 0],
-    });
-
-    return [
-      baseStyles,
-      {
-        top,
-        left,
-        transform: [
-          { translateX },
-          { translateY },
-          { rotate },
-        ],
-      },
-    ];
+    return {
+      position: 'absolute',
+      transform: [
+        { rotate },
+        { translateX: radius }, // Distance radiale contrôlée ici
+      ],
+    };
   };
 
   return (
     <View style={styles.container}>
-      <Animated.View style={createCircleStyle(styles.circle, 150, 50)}>
+      {/* Cercle jaune, commence en haut (offsetAngle = 0) */}
+      <Animated.View style={[styles.circle, createCircleStyle(90, 0)]}>
         <View style={styles.circle1} />
       </Animated.View>
-      <Animated.View style={createCircleStyle(styles.circle, -30, 50)}>
+
+      {/* Cercle violet, commence en bas (offsetAngle = 180) */}
+      <Animated.View style={[styles.circle, createCircleStyle(90, 180)]}>
         <View style={styles.circle2} />
       </Animated.View>
     </View>
@@ -63,14 +52,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    zIndex: 2,
+    marginLeft: '15%',
+    marginTop: '15%',
   },
   circle: {
-    position: 'absolute',
     width: 50,
     height: 50,
-    zIndex: 1,
   },
   circle1: {
     width: 50,

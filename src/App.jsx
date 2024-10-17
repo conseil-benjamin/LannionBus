@@ -112,7 +112,7 @@ function App() {
             <View>
               <AnimatedCircles />
               <Image
-                style={{width: 175, height: 175}}
+                style={{width: 175, height: 175, zIndex: 1}}
                 source={require('./assets/tilt.png')}></Image>
             </View>
             <View style={{width: '90%'}}>
